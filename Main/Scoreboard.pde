@@ -1,9 +1,9 @@
 class Scoreboard {
-  int roundsCount = 0;
-  FloatList results = new FloatList();
-  float average = 0;
+  public int roundsCount = 0;
+  public FloatList results = new FloatList();
+  public float average = 0;
 
-  void draw() {
+  public void draw() {
     
     // Set text properties
     textSize(24);
@@ -19,10 +19,15 @@ class Scoreboard {
     
   }
   
-  void addResult(float result) {
+  public void addResult(float result) {
     this.roundsCount++;
     this.results.append(result);
     this.average = (this.results.sum() / this.results.size());
   }
   
+  public void clean() {
+    this.roundsCount = 0;
+    this.results.clear();
+    this.average = 0;
+  }
 }

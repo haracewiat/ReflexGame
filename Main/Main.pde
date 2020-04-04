@@ -4,7 +4,7 @@ color COLOR_SUCCESS = color(51, 159, 255);
 color BACKGROUND = COLOR_DEFAULT;
 
 int MIN_SECONDS = 2;
-int MAX_SECONDS = 3;
+int MAX_SECONDS = 6;
 
 boolean CLICKED_SPACE = false;
 boolean CLICKED_A = false;

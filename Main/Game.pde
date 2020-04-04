@@ -7,47 +7,48 @@ class Game {
      
      switch (MODE) {
        
-       case BEFORE_GAME:                // Start the game if user pressed space
-          if (CLICKED_SPACE) { 
-             game.start(); 
-             CLICKED_SPACE = false;
-          }
-          break;
-          
-       case RESTART_GAME:               // Start the game
-         game.start();
-          
-       case BEFORE_ACTIVE:              // If space is pressed, it's a false start
-        
-          this.watchTimeElapse();        
-           
-          if (CLICKED_SPACE) {
-            MODE = Mode.ON_FAILURE;
-          }
-          break;
-          
-       case ON_ACTIVE:                  // If space is pressed, it's a success
-          if (CLICKED_SPACE) {
-             MODE = Mode.ON_SUCCESS;   
-          }
-          break;
-          
-       case ON_SUCCESS:                 // User can restart the game or see results (result appended)
-          game.finish();
-          break;
-          
-       case AFTER_GAME:                 // User can restart the game or see results 
-       case ON_FAILURE:                 // In case of failure result not appended
-           if (CLICKED_SPACE) {
-               MODE = Mode.RESTART_GAME; 
-            }
+       // Start the game if user pressed space
+       case BEFORE_GAME:                
+          if (CLICKED_SPACE) { game.start(); }
           break;
        
-       case RESULTS:                    // Display the results
+       // Start the game
+       case RESTART_GAME:               
+         game.start();
+       
+       // If space is pressed, it's a false start
+       case BEFORE_ACTIVE:              
+          this.watchTimeElapse();        
+          if (CLICKED_SPACE) { MODE = Mode.ON_FAILURE; }
+          break;
+       
+       // If space is pressed, it's a success
+       case ON_ACTIVE:                  
+          if (CLICKED_SPACE) { MODE = Mode.ON_SUCCESS; }
+          break;
+       
+       // User can restart the game or see results (result appended)
+       case ON_SUCCESS:                 
+          game.finish();
+          break;
+       
+       // Game is resumed
+       case AFTER_GAME:
+          if (CLICKED_SPACE) { MODE = Mode.RESTART_GAME; }
+          break;
+       
+       // In case of failure result not appended
+       case ON_FAILURE:                 
+          if (CLICKED_SPACE) { MODE = Mode.BEFORE_GAME; }
+          break;
+        
+       // Results are displayed
+       case RESULTS:                    
           if (CLICKED_SPACE) {
                MODE = Mode.RESTART_GAME;
-            }
-          break;
+               scoreboard.clean();
+           }
+           break;
      }
      
      // Watch the 'a' button

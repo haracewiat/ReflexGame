@@ -6,4 +6,5 @@ enum Mode {
   ON_ACTIVE,
   ON_SUCCESS,
   ON_FAILURE,
+  RESULTS,
 }

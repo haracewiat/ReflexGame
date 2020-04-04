@@ -28,6 +28,9 @@ class GameInformation {
       case ON_FAILURE:
         this.TEXT = "Too early!\n Press space to try again\n Press 'a' to finish";
         break;
+      case RESULTS:
+        this.TEXT = "Your average is\n" + nf(scoreboard.average, 0, 2) + " ms\n\nWant to try again? Press space";
+        break;
     }
   }
   
